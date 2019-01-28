@@ -41,7 +41,8 @@ class ButtonLayout implements ActionListener
 	static double sum=0;
 	static int operator=0;
 	static boolean degrees = false;
-	
+	static String divideByZero = "Can't Divide BY Zero Clear The Screen To Continue";
+	static boolean emptyTextField = true;
 	//Button Layout Class
 	ButtonLayout()
 	{
@@ -128,13 +129,13 @@ class ButtonLayout implements ActionListener
 		calculatorBody.add(buttonCos);
 		calculatorBody.add(buttonDeg);
 		
-		//Setting the layout, visiblity, size 
+		//Setting the layout, visiblity, size and exit button for the frame
 		calculatorBody.setLayout(null);
 		calculatorBody.setVisible(true);
-		calculatorBody.setSize(400,500);
+		calculatorBody.setSize(500,500);
 		calculatorBody.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		calculatorBody.setResizable(false);
-		
+
+		//Adding actionListeners to the buttons
 		button1.addActionListener(this);
 		button2.addActionListener(this);
 		button3.addActionListener(this);
@@ -160,194 +161,245 @@ class ButtonLayout implements ActionListener
 		buttonDeg.addActionListener(this);
 	}
  
+	//ActionListener Class
 	public void actionPerformed(ActionEvent e)
 	{
 		if(e.getSource()==button1)
 		{
 			displayText.setText(displayText.getText().concat("1"));
-		}//End If
+			emptyTextField= false;
+		}//End button1 Action Listener
 			
 		if(e.getSource()==button2)
 		{
 			displayText.setText(displayText.getText().concat("2"));
-		}//End If
+			emptyTextField= false;
+		}//End button2 Action Listener
 			
 		if(e.getSource()==button3)
 		{
 			displayText.setText(displayText.getText().concat("3"));
-		}//End If
+			emptyTextField= false;
+		}//End button3 Action Listener
 			
 		if(e.getSource()==button4)
 		{
 			displayText.setText(displayText.getText().concat("4"));
-		}//End If
+			emptyTextField= false;
+		}//End button4 Action Listener
 			
 		if(e.getSource()==button5)
 		{
 			displayText.setText(displayText.getText().concat("5"));
-		}//End If
+			emptyTextField= false;
+		}//End button1 Action Listener
 			
 		if(e.getSource()==button6)
 		{
 			displayText.setText(displayText.getText().concat("6"));
-		}//End If
+			emptyTextField= false;
+		}//End button1 Action Listener
 			
 		if(e.getSource()==button7)
 		{
 			displayText.setText(displayText.getText().concat("7"));
-		}//End If
+			emptyTextField= false;
+		}//End button1 Action Listener
 			
 		if(e.getSource()==button8)
 		{	
 			displayText.setText(displayText.getText().concat("8"));
-		}//End If
+			emptyTextField= false;
+		}//End button1 Action Listener
 			
 		if(e.getSource()==button9)
 		{
 			displayText.setText(displayText.getText().concat("9"));
-		}//End If
+			emptyTextField= false;
+		}//End button1 Action Listener
 			
 		if(e.getSource()==button0)
 		{
 			displayText.setText(displayText.getText().concat("0"));
-		}//End If
+			emptyTextField= false;
+		}//End button1 Action Listener
 			
 		if(e.getSource()==buttonDecimal)
 		{
 			displayText.setText(displayText.getText().concat("."));
-		}//End If
+			emptyTextField= false;
+		}//End button1 Action Listener
 			
-		if(e.getSource()==buttonAddition)
+		if(!emptyTextField)
 		{
-			number1=Double.parseDouble(displayText.getText());
-			operator=1;
-			displayText.setText("");
-		}//End If
 		
-		if(e.getSource()==buttonSubtract)
-		{
-			number1=Double.parseDouble(displayText.getText());
-			operator=2;
-			displayText.setText("");
-		}//End If
-		
-		if(e.getSource()==buttonMulti)
-		{
-			number1=Double.parseDouble(displayText.getText());
-			operator=3;
-			displayText.setText("");
-		}//End If
-		
-		if(e.getSource()==buttonDivide)
-		{
-			number1=Double.parseDouble(displayText.getText());
-			operator=4;
-			displayText.setText("");
-		}//End If
-		
-		if(e.getSource()==buttonEqual)
-		{
-			number2=Double.parseDouble(displayText.getText());
-		
-			switch(operator)
+			if(e.getSource()==buttonAddition)
 			{
-				case 1: 
-					sum=number1+number2;
-					break;
+				number1=Double.parseDouble(displayText.getText());
+				operator=1;
+				displayText.setText("");
+			}//End button1 Action Listener
 		
-				case 2: 
-					sum=number1-number2;
-					break;
-		
-				case 3: 
-					sum=number1*number2;
-					break;
-		
-				case 4: 
-					sum=number1/number2;
-					break;
-		
-				case 5:
-					if(degrees)
-					{
-						sum=Math.tan(Math.toRadians(number2));
-					}
-					else
-					{
-						sum=Math.tan(number2);
-					}
-					break;
-					
-				case 6:
-					if(degrees)
-					{
-						sum=Math.sin(Math.toRadians(number2));
-					}
-					else
-					{
-						sum=Math.sin(number2);
-					}//End Else
-					break;
-					
-				case 7:
-					if(degrees)
-					{
-						sum=Math.cos(Math.toRadians(number2));
-					}//End If
-					else
-					{
-						sum=Math.cos(number2);
-					}//End Else
-					break;
-					
-				default: sum=0;
-			}//End Switch
-		
-			displayText.setText(""+sum);
-		}//End If
-		
-		if(e.getSource()==buttonClear)
-		{
-			displayText.setText("");
-		}//End If
-			
-		if(e.getSource()==buttonDelete)
-		{
-			String s=displayText.getText();
-			displayText.setText("");
-			
-			for(int i=0;i<s.length()-1;i++)
+			if(e.getSource()==buttonSubtract)
 			{
-			displayText.setText(displayText.getText()+s.charAt(i));
-			}//End For
-		}//End If
+				number1=Double.parseDouble(displayText.getText());
+				operator=2;
+				displayText.setText("");
+			}//End button1 Action Listener
 		
-		if(e.getSource()==buttonTan)
-		{
+			if(e.getSource()==buttonMulti)
+			{
+				number1=Double.parseDouble(displayText.getText());
+				operator=3;
+				displayText.setText("");
+			}//End button1 Action Listener
+		
+			if(e.getSource()==buttonDivide)
+			{
+				number1=Double.parseDouble(displayText.getText());
+				operator=4;
+				displayText.setText("");
+			}//End button1 Action Listener
+		
+			if(e.getSource()==buttonEqual)
+			{
+				number2=Double.parseDouble(displayText.getText());
+		
+				switch(operator)
+				{
+					case 1:
+					{
+						sum=number1+number2;
+						displayText.setText(""+sum);
+						break;
+					}
+				
+					case 2: 
+					{
+						sum=number1-number2;
+						displayText.setText(""+sum);
+						break;
+					}
+				
+					case 3: 
+					{
+						sum=number1*number2;
+						displayText.setText(""+sum);
+						break;
+					}
+				
+					case 4: 
+					{	
+						sum=number1/number2;
+						displayText.setText(""+sum);
+						try
+							{
+								Verifier.nonZeroDivision(number2);
+							}
+						
+						catch(MyArithmeticException c)
+							{
+								c.printStackTrace();
+								
+								displayText.setText(divideByZero);
+							}
+						break;
+					}
+				
+					case 5:
+					{
+						if(degrees)
+						{
+							sum=number1 * Math.tan(Math.toRadians(number2));
+						}
+						else
+						{
+							sum=number1 * Math.tan(number2);
+						}
+						displayText.setText(""+sum);
+						break;
+					}	
+				
+					case 6:
+					{
+						if(degrees)
+						{
+							sum=number1 * Math.sin(Math.toRadians(number2));
+						}
+						else
+						{
+							sum=number1 *Math.sin(number2);
+						}//End Else
+						displayText.setText(""+sum);
+						break;
+					}
+				
+					case 7:
+					{
+						if(degrees)
+						{
+							sum=Math.cos(Math.toRadians(number2));
+						}//End If
+						else
+						{
+							sum=Math.cos(number2);
+						}//End Else
+						displayText.setText(""+sum);
+						break;
+					}
+					
+					default:
+					{	
+						sum=0;
+					}
+				}//End Switch
+
+			}//End buttonEquals Action Listener
+		
+			if(e.getSource()==buttonClear)
+			{
+				displayText.setText("");
+			}//End buttonClear Action Listener
+			
+			if(e.getSource()==buttonDelete)
+			{
+				String s=displayText.getText();
+				displayText.setText("");
+			
+				for(int i=0;i<s.length()-1;i++)
+				{
+				displayText.setText(displayText.getText()+s.charAt(i));
+				}//End For
+			}//End buttonDelete Action Listener
+		
+			if(e.getSource()==buttonTan)
+			{
 				number1=Double.parseDouble(displayText.getText());
 				operator=5;
 				displayText.setText("");
-		}//End If
+			}//End buttonTan Action Listener
 		
-		if(e.getSource()==buttonSin)
-		{
-			number1=Double.parseDouble(displayText.getText());
-			operator=6;
-			displayText.setText("");
-		}//End If
+			if(e.getSource()==buttonSin)
+			{
+				number1=Double.parseDouble(displayText.getText());
+				operator=6;
+				displayText.setText("");
+			}//End buttonSin Action Listener
 		
-		if(e.getSource()==buttonCos)
-		{
-			number1=Double.parseDouble(displayText.getText());
-			operator=7;
-			displayText.setText("");
-		}//End If
+			if(e.getSource()==buttonCos)
+			{
+				number1=Double.parseDouble(displayText.getText());
+				operator=7;
+				displayText.setText("");
+			}//End buttonCos Action Listener
+		
+		}
 		
 		if(e.getSource()==buttonAns)
 		{
 			displayText.setText(""+sum);
-		}//End If
-		
+		}//End buttonAns Action Listener
+	
 		if(e.getSource()==buttonDeg)
 		{
 			degrees=(!degrees);
@@ -359,6 +411,8 @@ class ButtonLayout implements ActionListener
 			{
 				buttonDeg.setText("RAD");
 			}//End Else
-		}//End If
+		}//End buttonDeg Action Listener
+		
 	}//End Action Listener
+	
 }//End Class
